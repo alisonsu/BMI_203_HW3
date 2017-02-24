@@ -81,7 +81,8 @@ def static_align(s,pospairs,negpairs):
 def objective_function(pos_scores,neg_scores):  
     """
     This is objective function calculation I am trying to optimize:
-    sum of tpr for fpr = 0.0, 0.1, 0.2, 0.3
+    sum of tpr for fpr = 0.0, 0.1, 0.2, 0.3. Right now, it's set to minimize
+    the function by multiplying by -1
     """
     # Generate ROC scores
     pos_ID = np.ones(50) 
@@ -228,7 +229,7 @@ for i in range(len(final_score_matrix)):
 outfile.close()
 
 # Read back in new optimized matrix
-test_s_matrix, test_key = align.read_score_matrix("BLOSUM62_optimized_2")
+test_s_matrix, test_key = align.read_score_matrix("BLOSUM62_optimized")
 
 #Calculate score in static alignment using new matrix    
 pos_scores = []
